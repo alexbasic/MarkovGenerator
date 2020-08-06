@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Generator.Comparers;
+using Generator.MarkovModels.Generators;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Generator
+namespace Generator.MarkovModels
 {
     public class MarkovModel
     {

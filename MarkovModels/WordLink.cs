@@ -1,4 +1,4 @@
-﻿namespace Generator
+﻿namespace Generator.MarkovModels
 {
     public class WordLink
     {

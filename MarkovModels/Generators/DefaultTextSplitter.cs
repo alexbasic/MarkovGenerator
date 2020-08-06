@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Generator
+namespace Generator.MarkovModels.Generators
 {
     public class DefaultTextSplitter : ITextSplitter
     {

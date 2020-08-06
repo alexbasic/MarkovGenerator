@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Generator
+namespace Generator.MarkovModels.Generators
 {
     public class DefaultTextPreparator : ITextPreparator
     {

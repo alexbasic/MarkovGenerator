@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Generator
+namespace Generator.Comparers
 {
     public class StringEqualityComparer : IEqualityComparer<string>
     {

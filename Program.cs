@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Generator.Generators;
+using Generator.MarkovModels;
+using Generator.MarkovModels.Generators;
+using System;
 using System.IO;
 using System.Linq;
 using System.Resources;
@@ -12,13 +15,18 @@ namespace Generator
     {
         static void Main(string[] args)
         {
-            var inputFile = @"E:\Users\aleksandr\Documents\inputText1.txt";
-            var inputText = File.ReadAllText(inputFile) + " " + 
+            var inputText = File.ReadAllText(@"E:\Users\aleksandr\Documents\inputText1.txt") + " " + 
                 File.ReadAllText(@"E:\Users\aleksandr\Documents\inputText2.txt") + " " +
                 File.ReadAllText(@"E:\Users\aleksandr\Documents\inputText3.txt") + " " +
                 File.ReadAllText(@"E:\Users\aleksandr\Documents\inputText4.txt");
 
-            var model = new MarkovModel(new TestTextPreparator(), new TestTextSplitter());
+            var useAltrnativeModelGenerator = true;
+
+            //---------------------------------------
+
+            var model = useAltrnativeModelGenerator ?
+                new MarkovModel(new AlternativeTextPreparator(), new AlternativeTextSplitter()) :
+                new MarkovModel();
             model.PrepareFromText(inputText);
 
             var generator = new MarkovGenerator(model, true);
@@ -29,40 +37,6 @@ namespace Generator
 
                 Thread.Sleep(1000);
             }
-
-
-            Console.WriteLine("Hello World!");
-        }
-    }
-
-    public class TestTextPreparator : ITextPreparator
-    {
-        public string Prepare(string text)
-        {
-            var specChars = new Regex($"([\\*\\-])", RegexOptions.Multiline);
-            var extraChars = new Regex($"[^a-zёа-я0-9 -!\\?\\.\\,]", RegexOptions.Multiline);
-
-            var inputText = specChars.Replace(text.ToLower(), " ");
-            inputText = extraChars.Replace(inputText, " ");
-
-            inputText = inputText
-                .Replace("...", ".")
-                .Replace("..", ".");
-
-            return inputText;
-        }
-    }
-
-    public class TestTextSplitter : ITextSplitter
-    {
-        public string[] SplitBySentence(string text)
-        {
-            return text.Split(new char[] { '.', '!', '?', ';', ',' }, StringSplitOptions.RemoveEmptyEntries);
-        }
-
-        public string[] SplitSentenceByWords(string sentence)
-        {
-            return sentence.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }

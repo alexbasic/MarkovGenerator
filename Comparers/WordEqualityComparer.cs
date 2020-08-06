@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Generator.MarkovModels;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Generator
+namespace Generator.Comparers
 {
     public class WordEqualityComparer : IEqualityComparer<Word>
     {
