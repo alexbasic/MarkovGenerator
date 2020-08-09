@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Linq;
 
-namespace Generator.MarkovModels.Generators
+namespace Generator.MarkovModels.ModelGenerators
 {
     public class DefaultTextSplitter : ITextSplitter
     {
         public string[] SplitBySentence(string text)
         {
-            return text.Split(new char[] { '.', '!', '?' }, StringSplitOptions.RemoveEmptyEntries);
+            return text
+                .Split(new char[] { '.', '!', '?' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => x.Trim())
+                .ToArray();
         }
 
         public string[] SplitSentenceByWords(string sentence)

@@ -1,12 +1,11 @@
 ﻿using Generator.MarkovModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Generator.Generators
+namespace Generator.PhraseGenerators
 {
-    public class MarkovGenerator
+    public class MarkovPhraseGenerator
     {
         private MarkovModel _model;
 
@@ -15,7 +14,7 @@ namespace Generator.Generators
         /// </summary>
         private bool _nextWordByDistribution;
 
-        public MarkovGenerator(MarkovModel model, bool nextWordByDistribution)
+        public MarkovPhraseGenerator(MarkovModel model, bool nextWordByDistribution)
         {
             _model = model;
             _nextWordByDistribution = nextWordByDistribution;

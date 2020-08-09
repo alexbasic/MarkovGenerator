@@ -1,4 +1,4 @@
-﻿namespace Generator.MarkovModels.Generators
+﻿namespace Generator.MarkovModels.ModelGenerators
 {
     public interface ITextPreparator
     {
