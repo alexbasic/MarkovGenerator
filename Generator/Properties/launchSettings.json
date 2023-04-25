@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Generator": {
+      "commandName": "Project",
+      "commandLineArgs": "e:\\temp\\test1.txt e:\\temp\\test2.txt"
+    }
+  }
+}
